@@ -2,7 +2,11 @@ import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import L from "leaflet";
 import { useEffect } from "react";
-import { locationData } from "../context/IPContext";
+import { IPContext } from "../context/IPContext";
+// import {
+//   FavoritesContext
+// } from "../context/FavoritesContext";
+
 
 import icon from "leaflet/dist/images/marker-icon.png";
 import iconShadow from "leaflet/dist/images/marker-shadow.png";
@@ -28,6 +32,10 @@ let DefaultIcon = L.icon({
 L.Marker.prototype.options.icon = DefaultIcon;
 
 const MapView = () => {
+      const { locationData } = IPContext();
+    //  const { isFavorite, removeFromFavorites } = FavoritesContext();
+
+
   if (!locationData || !locationData.location)
     return <div className="map-placeholder">Loading Map...</div>;
 
