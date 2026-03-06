@@ -1,4 +1,5 @@
 import { createContext, useState, useEffect, useContext } from 'react';
+import useFetch from '../hooks/useFetch';
 
 
 const mockData = {
@@ -14,3 +15,20 @@ const mockData = {
     }
 };
 
+const IPContext = createContext();
+
+export const IPProvider = (( children )) => {
+    const [query, setQuery] = useState('');
+
+    const { data, loading, error } = useFetch(url=null);
+
+      return (
+        <IPContext.Provider
+          value={{ }}
+        >
+          {children}
+        </IPContext.Provider>
+      );
+}:
+
+export default IPProvider;
