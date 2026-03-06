@@ -5,6 +5,16 @@
   text-align: center;
 }
 
+.leaflet-container {
+  height: 100%;
+  width: 100%;
+}
+.map-container-wrapper {
+  height: 500px; /* Or 60vh, 100%, etc. */
+  width: 100%;
+  position: relative;
+}
+
 .logo {
   height: 6em;
   padding: 1.5em;

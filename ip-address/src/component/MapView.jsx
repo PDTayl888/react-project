@@ -35,7 +35,6 @@ L.Marker.prototype.options.icon = DefaultIcon;
 
 const MapView = () => {
       const { locationData } = useContext(IPContext);
-    //  const { isFavorite, removeFromFavorites } = FavoritesContext();
 
 
   if (!locationData || !locationData.location)
@@ -45,11 +44,12 @@ const MapView = () => {
   const position = [lat, lng];
 
   return (
+    <section>
     <MapContainer
       center={position}
       zoom={13}
       scrollWheelZoom={true}
-      style={{ height: "100%", width: "100%" }}
+      style={{ height: '70vh'}}
     >
       <TileLayer
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -64,6 +64,9 @@ const MapView = () => {
         </Popup>
       </Marker>
     </MapContainer>
+
+
+    </section>
   );
 };
 
