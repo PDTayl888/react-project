@@ -1,13 +1,13 @@
 import { useState, useEffect } from "react";
 
 const useLocalStorage = (key, initialValue=[]) => {
-  console.log(initialValue)
-  console.log("initial value above")
+  // console.log(initialValue)
+  // console.log("initial value above")
   const [value, setValue] = useState(() => {
     try {
-      console.log(key)
+      // console.log(key)
       const item = localStorage.getItem(key);
-      console.log(item)
+      // console.log(item)
 
       if (item && item !== "undefined") {
         const parsed = JSON.parse(item);

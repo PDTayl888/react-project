@@ -8,13 +8,9 @@ const FavoritesProvider = ({ children }) => {
 
   const addToFavorites = (location) => {
     console.log("ADDED");
-    console.log(location.ip);
-    console.log(favorites);
     if (!isFavorite(location.ip)) {
-      setFavorites([...favorites, location.ip]);
+      setFavorites([...favorites, location]);
     }
-    console.log("filled below");
-    console.log(favorites);
   };
 
   const removeFromFavorites = (ip) => {
@@ -23,7 +19,9 @@ const FavoritesProvider = ({ children }) => {
   };
 
   const isFavorite = (ip) => {
-    return !!favorites?.find((item) => item.ip === ip);
+
+    const isIt = !!favorites?.find((item) => item.ip === ip);
+    return isIt;
   };
 
   return (

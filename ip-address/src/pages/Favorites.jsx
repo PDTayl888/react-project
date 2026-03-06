@@ -3,6 +3,7 @@ import { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { FavoritesContext } from "../context/FavoritesContext";
 import { IPContext } from "../context/IPContext";
+import InfoDisplay from "../component/InfoDisplay";
 
 const Favorites = () => {
   const { favorites } = useContext(FavoritesContext);
@@ -13,8 +14,8 @@ const Favorites = () => {
     fetchLocation(ip);
     navigate("/");
   };
-  console.log("favs list");
-  console.log(favorites);
+  // console.log("favs list");
+  // console.log(favorites);
   const favoritesCount = favorites?.length ?? 0;
 
   return (
@@ -29,13 +30,12 @@ const Favorites = () => {
         ) : (
           <ul>
             {favorites.map((item) => (
-              <li key={item.ip}>
+              <div key={item.ip}>
+                {console.log(item)}
+                <InfoDisplay data={item}></InfoDisplay>
                 <div onClick={() => displayFav(item.ip)}>
-                  <p>
-                    {/* {item.location.city}, {item.location.region} */}
-                  </p>
                 </div>
-              </li>
+              </div>
             ))}
           </ul>
         )}
