@@ -6,16 +6,18 @@ export const FavoritesContext = createContext();
 const FavoritesProvider = ({ children }) => {
   const [favorites, setFavorites] = useLocalStorage([]);
 
-  const addToFavorites = (recipe) => {
-    setFavorites([...favorites, recipe]);
+  const addToFavorites = (location) => {
+    if (!isFavorite(location.ip)) {
+        setFavorites([...favorites, location]);
+    }
   };
 
-  const removeFromFavorites = (id) => {
-    setFavorites(favorites.filter((recipe) => recipe.idMeal !== id));
+  const removeFromFavorites = (ip) => {
+    setFavorites(favorites.filter((item) => item.ip !== ip));
   };
 
-  const isFavorite = (id) => {
-    const isFound = favorites.find((item) => item.idMeal === id);
+  const isFavorite = (ip) => {
+    const isFound = favorites.find((item) => item.ip === ip);
 
     return isFound !== undefined;
   };

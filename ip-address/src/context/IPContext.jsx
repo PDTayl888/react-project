@@ -17,8 +17,13 @@ const mockData = {
 
 const IPContext = createContext();
 
-export const IPProvider = (( children )) => {
+const IPProvider = ({ children }) => {
     const [query, setQuery] = useState('');
+    const [locationData, setLocationData] = useState(mockData);
+
+    useEffect(() => {
+        setLocationData(data);
+    }, [data]);
 
     const { data, loading, error } = useFetch(url=null);
 
@@ -29,6 +34,6 @@ export const IPProvider = (( children )) => {
           {children}
         </IPContext.Provider>
       );
-}:
+};
 
 export default IPProvider;
