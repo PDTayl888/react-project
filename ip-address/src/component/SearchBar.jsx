@@ -7,6 +7,31 @@ const SearchBar = () => {
   const [input, setInput] = useState("");
   const { fetchLocation } = useContext(IPContext);
 
+  const formStyle = {
+    display: "flex",
+    justifyContent: "center",
+    maxWidth: "500px",
+    margin: "0 auto",
+  };
+
+  const inputStyle = {
+    padding: "1rem",
+    borderRadius: "15px 0 0 15px",
+    border: "none",
+    width: "100%",
+    fontSize: "1rem",
+  };
+
+  const buttonStyle = {
+    background: "black",
+    color: "white",
+    border: "none",
+    padding: "0 1.25rem",
+    borderRadius: "0 15px 15px 0",
+    cursor: "pointer",
+    fontSize: "1.2rem",
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     if (input.trim()) {
@@ -16,15 +41,17 @@ const SearchBar = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form style={formStyle} onSubmit={handleSubmit}>
       <input
+        style={inputStyle}
         type="text"
         placeholder="Enter IP address.."
         value={input}
         onChange={(e) => setInput(e.target.value)}
       />
-      <button type="submit">Search</button>
-      
+      <button type="submit" style={buttonStyle}>
+        Search
+      </button>
     </form>
   );
 };

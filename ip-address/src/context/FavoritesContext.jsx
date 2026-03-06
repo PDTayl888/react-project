@@ -14,12 +14,11 @@ const FavoritesProvider = ({ children }) => {
   };
 
   const removeFromFavorites = (ip) => {
-    console.log('REMOVED');
+    console.log("REMOVED");
     setFavorites(favorites.filter((item) => item.ip !== ip));
   };
 
   const isFavorite = (ip) => {
-
     const isIt = !!favorites?.find((item) => item.ip === ip);
     return isIt;
   };

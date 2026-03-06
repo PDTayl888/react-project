@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-const useLocalStorage = (key, initialValue=[]) => {
+const useLocalStorage = (key, initialValue = []) => {
   // console.log(initialValue)
   // console.log("initial value above")
   const [value, setValue] = useState(() => {

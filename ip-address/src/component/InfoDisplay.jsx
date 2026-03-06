@@ -3,6 +3,19 @@ import { useContext } from "react";
 import { FavoritesContext } from "../context/FavoritesContext";
 
 const InfoDisplay = ({ data }) => {
+
+  const cardStyle = {
+
+  }
+
+  const sectionStyle = {
+
+  }
+
+  const labelStyle = {
+
+  }
+  
   const { removeFromFavorites, addToFavorites, isFavorite } =
     useContext(FavoritesContext);
 

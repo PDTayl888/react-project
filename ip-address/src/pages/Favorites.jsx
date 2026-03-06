@@ -31,10 +31,9 @@ const Favorites = () => {
           <ul>
             {favorites.map((item) => (
               <div key={item.ip}>
-                {console.log(item)}
+                {/* {console.log(item)} */}
                 <InfoDisplay data={item}></InfoDisplay>
-                <div onClick={() => displayFav(item.ip)}>
-                </div>
+                <div onClick={() => displayFav(item.ip)}></div>
               </div>
             ))}
           </ul>
