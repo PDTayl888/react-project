@@ -9,6 +9,7 @@ const useFetch = (url) => {
 
     if (!url) {
       setData(null);
+      setLoading(false);
       return;
     }
 
