@@ -3,19 +3,36 @@ import { useContext } from "react";
 import { FavoritesContext } from "../context/FavoritesContext";
 
 const InfoDisplay = ({ data }) => {
-
   const cardStyle = {
-
-  }
+    background: "white",
+    borderRadius: "15px",
+    padding: "1.5rem",
+    display: "flex",
+    flexDirection: "column",
+    gap: "1rem",
+    boxShadow: "0 10px 20px rgba(0,0,0,0.1)",
+    textAlign: "center",
+  };
 
   const sectionStyle = {
-
-  }
+    display: "flex",
+    flexDirection: "column",
+    gap: "0.25rem",
+  };
 
   const labelStyle = {
+    fontSize: "0.65rem",
+    fontWeight: 700,
+    color: "#9b9b9b",
+  };
 
-  }
-  
+  const infoStyle = {
+    fontSize: "1.25rem",
+    fontWeight: 700,
+    color: "#2c2c2c",
+    margin: 0,
+  };
+
   const { removeFromFavorites, addToFavorites, isFavorite } =
     useContext(FavoritesContext);
 
@@ -37,29 +54,31 @@ const InfoDisplay = ({ data }) => {
   };
 
   return (
-    <div>
-      <div>
+    <div style={cardStyle}>
+      <div style={sectionStyle}>
         <button onClick={toggleFavorite}>{favStatus ? "unFav" : "Fav"}</button>
       </div>
-      <div>
-        <span>IP ADDRESS</span>
-        <p>{loading ? "LOADING..." : ip}</p>
+      <div style={sectionStyle}>
+        <span style={labelStyle}>IP ADDRESS</span>
+        <p style={infoStyle}>{loading ? "LOADING..." : ip}</p>
       </div>
-      <div>
-        <span>LOCATION</span>
-        <p>
+      <div style={sectionStyle}>
+        <span style={labelStyle}>LOCATION</span>
+        <p style={infoStyle}>
           {loading
             ? "LOADING..."
             : `${location.city}, ${location.region} ${location.postalCode}`}
         </p>
       </div>
-      <div>
-        <span>TIMEZONE</span>
-        <p>{loading ? "Loading..." : `UTC ${location.timezone}`}</p>
+      <div style={sectionStyle}>
+        <span style={labelStyle}>TIMEZONE</span>
+        <p style={infoStyle}>
+          {loading ? "Loading..." : `UTC ${location.timezone}`}
+        </p>
       </div>
-      <div>
-        <span>ISP</span>
-        <p>{loading ? "Loading..." : isp}</p>
+      <div style={sectionStyle}>
+        <span style={labelStyle}>ISP</span>
+        <p style={infoStyle}>{loading ? "Loading..." : isp}</p>
       </div>
     </div>
   );
