@@ -13,7 +13,7 @@ const useLocalStorage = (key, initialValue) => {
 
   useEffect(() => {
     try {
-      localStorage.setItem("fav-recipes", JSON.stringify(value));
+      localStorage.setItem(key, JSON.stringify(value));
     } catch (error) {
       console.error(error);
     }

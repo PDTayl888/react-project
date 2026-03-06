@@ -17,7 +17,7 @@ const FavoritesProvider = ({ children }) => {
   };
 
   const isFavorite = (ip) => {
-    return (favorites ?? []).find((item) => item.ip === ip);
+    return !!favorites?.find((item) => item.ip === ip);
   };
 
   return (

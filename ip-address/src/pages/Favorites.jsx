@@ -14,6 +14,8 @@ const Favorites = () => {
     navigate("/");
   };
 
+  const favoritesCount = Favorites?.length ?? 0;
+
   return (
     <div>
       <div>
@@ -21,7 +23,7 @@ const Favorites = () => {
         <Link to="/">HOME</Link>
       </div>
       <div>
-        {Favorites.length === 0 ? (
+        {favoritesCount === 0 ? (
           <p>NONE SAVED</p>
         ) : (
           <ul>
