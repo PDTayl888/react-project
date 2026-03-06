@@ -1,9 +1,9 @@
 import { useContext } from "react";
-
 import { Link, useNavigate } from "react-router-dom";
 import { FavoritesContext } from "../context/FavoritesContext";
 import { IPContext } from "../context/IPContext";
 import InfoDisplay from "../component/InfoDisplay";
+import bgMobile from "../images/pattern-bg-mobile.png";
 
 const Favorites = () => {
   const { favorites } = useContext(FavoritesContext);
@@ -18,11 +18,21 @@ const Favorites = () => {
   // console.log(favorites);
   const favoritesCount = favorites?.length ?? 0;
 
+  const mainStyle = {
+    backgroundImage: `url(${bgMobile})`,
+
+    // backgroundColor: "black",
+    border: "20px solid red",
+    minWidth: "450px",
+  };
+
   return (
-    <div>
+    <div style={mainStyle}>
       <div>
-        <h1>FAVORITE LOCATIONS</h1>
-        <Link to="/">HOME</Link>
+        <h2>FAVORITE LOCATIONS</h2>
+        <Link style={{ color: "white" }} to="/">
+          HOME
+        </Link>
       </div>
       <div>
         {favoritesCount === 0 ? (

@@ -2,6 +2,7 @@ import { useContext } from "react";
 
 import { IPContext } from "../context/IPContext";
 import { useState } from "react";
+import iconArrow from "../images/icon-arrow.svg";
 
 const SearchBar = () => {
   const [input, setInput] = useState("");
@@ -10,7 +11,7 @@ const SearchBar = () => {
   const formStyle = {
     display: "flex",
     justifyContent: "center",
-    maxWidth: "500px",
+    maxWidth: "250px",
     margin: "0 auto",
   };
 
@@ -50,7 +51,7 @@ const SearchBar = () => {
         onChange={(e) => setInput(e.target.value)}
       />
       <button type="submit" style={buttonStyle}>
-        Search
+        <img src={iconArrow} alt="Search" style={{ width: '11px', height: '14px' }} />
       </button>
     </form>
   );

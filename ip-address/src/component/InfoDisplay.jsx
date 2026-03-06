@@ -12,6 +12,7 @@ const InfoDisplay = ({ data }) => {
     gap: "1rem",
     boxShadow: "0 10px 20px rgba(0,0,0,0.1)",
     textAlign: "center",
+    maxWidth: '200px'
   };
 
   const sectionStyle = {
@@ -98,7 +99,7 @@ const InfoDisplay = ({ data }) => {
       </div>
       <div style={buttonSectionStyle}>
         <button style={buttonStyle} onClick={toggleFavorite}>
-          {favStatus ? "❤️" : "🤍"}
+          {favStatus ? "❤️" : "🩶"}
         </button>
       </div>
     </div>
