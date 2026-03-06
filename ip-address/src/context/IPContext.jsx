@@ -21,15 +21,22 @@ const IPProvider = ({ children }) => {
     const [query, setQuery] = useState('');
     const [locationData, setLocationData] = useState(mockData);
 
+    const url = query 
+    ? `https://geo.ipify.org/api/v2/country,city?apiKey=${apiKey}&ipAddress=${query}` 
+    : null;
+
     useEffect(() => {
-        setLocationData(data);
+        setLocationData(mockData);
     }, [data]);
 
-    const { data, loading, error } = useFetch(url=null);
+    const { data, loading, error } = useFetch(url);
 
+    const fetchLocation = (ip) => {
+    setQuery(ip); 
+  };
       return (
         <IPContext.Provider
-          value={{ }}
+          value={{locationData, loading, error, fetchLocation }}
         >
           {children}
         </IPContext.Provider>
