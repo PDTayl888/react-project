@@ -3,6 +3,8 @@ import "leaflet/dist/leaflet.css";
 import L from "leaflet";
 import { useEffect } from "react";
 import { IPContext } from "../context/IPContext";
+import { useContext } from "react";
+
 // import {
 //   FavoritesContext
 // } from "../context/FavoritesContext";
@@ -32,7 +34,7 @@ let DefaultIcon = L.icon({
 L.Marker.prototype.options.icon = DefaultIcon;
 
 const MapView = () => {
-      const { locationData } = IPContext();
+      const { locationData } = useContext(IPContext);
     //  const { isFavorite, removeFromFavorites } = FavoritesContext();
 
 

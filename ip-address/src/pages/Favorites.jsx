@@ -1,9 +1,11 @@
+import { useContext } from "react";
+
 import { Link, useNavigate } from "react-router-dom";
 import { FavoritesContext } from "../context/FavoritesContext";
 import { IPContext } from '../context/IPContext';
 
 const Favorites = () => {
-  const { Favorites, removeFromFavorites } = FavoritesContext();
+  const { Favorites, removeFromFavorites } = useContext(FavoritesContext);
   const navigate = useNavigate();
 
   const displayFav = (ip) => {

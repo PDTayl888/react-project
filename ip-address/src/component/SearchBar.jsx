@@ -1,12 +1,14 @@
+import { useContext } from "react";
+
 import { IPContext } from "../context/IPContext";
 import { useState } from "react";
 
 const SearchBar = () => {
   const [input, setInput] = useState("");
+  const { fetchLocation } = useContext(IPContext);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const { fetchLocation } = IPContext();
     if (input.trim()) {
       fetchLocation(input);
     }

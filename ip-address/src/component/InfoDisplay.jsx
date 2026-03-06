@@ -1,12 +1,13 @@
 import { IPContext } from "../context/IPContext";
-import {
-  FavoritesContext
-} from "../context/FavoritesContext";
+import { useContext } from "react";
+import { FavoritesContext } from "../context/FavoritesContext";
 
 const InfoDisplay = () => {
-    const { locationData, isFavorite, removeFromFavorites } = IPContext();
+  const { removeFromFavorites, addToFavorites, isFavorite } =
+    useContext(FavoritesContext);
+
+  const { locationData, loading } = useContext(IPContext);
   if (!locationData || !locationData.location) return null;
-const { addToFavorites } = FavoritesContext();
   const { ip, isp, location } = locationData;
   const favStatus = isFavorite(ip);
 
