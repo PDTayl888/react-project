@@ -5,7 +5,7 @@ import { FavoritesContext } from "../context/FavoritesContext";
 import { IPContext } from '../context/IPContext';
 
 const Favorites = () => {
-  const { Favorites, removeFromFavorites } = useContext(FavoritesContext);
+  const { Favorites } = useContext(FavoritesContext);
   const navigate = useNavigate();
 
   const displayFav = (ip) => {
