@@ -20,6 +20,12 @@ const InfoDisplay = ({ data }) => {
     gap: "0.25rem",
   };
 
+  const buttonSectionStyle = {
+    display: "flex",
+    flexDirection: "column",
+    gap: "0.25rem",
+  };
+
   const labelStyle = {
     fontSize: "0.65rem",
     fontWeight: 700,
@@ -31,6 +37,19 @@ const InfoDisplay = ({ data }) => {
     fontWeight: 700,
     color: "#2c2c2c",
     margin: 0,
+  };
+
+  const buttonStyle = {
+    display: "flex",
+    top: "100px",
+    right: "10px",
+    background: "none",
+    border: "none",
+    cursor: "pointer",
+    fontSize: "1.2rem",
+    padding: "5px",
+    width: "20%",
+    outline: "none",
   };
 
   const { removeFromFavorites, addToFavorites, isFavorite } =
@@ -56,9 +75,6 @@ const InfoDisplay = ({ data }) => {
   return (
     <div style={cardStyle}>
       <div style={sectionStyle}>
-        <button onClick={toggleFavorite}>{favStatus ? "unFav" : "Fav"}</button>
-      </div>
-      <div style={sectionStyle}>
         <span style={labelStyle}>IP ADDRESS</span>
         <p style={infoStyle}>{loading ? "LOADING..." : ip}</p>
       </div>
@@ -79,6 +95,11 @@ const InfoDisplay = ({ data }) => {
       <div style={sectionStyle}>
         <span style={labelStyle}>ISP</span>
         <p style={infoStyle}>{loading ? "Loading..." : isp}</p>
+      </div>
+      <div style={buttonSectionStyle}>
+        <button style={buttonStyle} onClick={toggleFavorite}>
+          {favStatus ? "❤️" : "🤍"}
+        </button>
       </div>
     </div>
   );
