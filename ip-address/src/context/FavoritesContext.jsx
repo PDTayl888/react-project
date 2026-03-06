@@ -7,12 +7,18 @@ const FavoritesProvider = ({ children }) => {
   const [favorites, setFavorites] = useLocalStorage([]);
 
   const addToFavorites = (location) => {
+    console.log("ADDED");
+    console.log(location.ip);
+    console.log(favorites);
     if (!isFavorite(location.ip)) {
-      setFavorites([...favorites, location]);
+      setFavorites([...favorites, location.ip]);
     }
+    console.log("filled below");
+    console.log(favorites);
   };
 
   const removeFromFavorites = (ip) => {
+    console.log('REMOVED');
     setFavorites(favorites.filter((item) => item.ip !== ip));
   };
 

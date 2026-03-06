@@ -5,7 +5,7 @@ const mockData = {
   ip: "222.33.44.222",
   isp: "Comcast",
   location: {
-    city: "Pittsburgh",
+    city: "Garyville",
     region: "Pa",
     postalCode: "15243",
     timezone: "-05:000",

@@ -2,10 +2,10 @@ import { useContext } from "react";
 
 import { Link, useNavigate } from "react-router-dom";
 import { FavoritesContext } from "../context/FavoritesContext";
-import { IPContext } from '../context/IPContext';
+import { IPContext } from "../context/IPContext";
 
 const Favorites = () => {
-  const { Favorites } = useContext(FavoritesContext);
+  const { favorites } = useContext(FavoritesContext);
   const navigate = useNavigate();
 
   const displayFav = (ip) => {
@@ -13,8 +13,9 @@ const Favorites = () => {
     fetchLocation(ip);
     navigate("/");
   };
-
-  const favoritesCount = Favorites?.length ?? 0;
+  console.log("favs list");
+  console.log(favorites);
+  const favoritesCount = favorites?.length ?? 0;
 
   return (
     <div>
@@ -27,11 +28,11 @@ const Favorites = () => {
           <p>NONE SAVED</p>
         ) : (
           <ul>
-            {Favorites.map((item) => (
+            {favorites.map((item) => (
               <li key={item.ip}>
                 <div onClick={() => displayFav(item.ip)}>
                   <p>
-                    {item.location.city}, {item.location.region}
+                    {/* {item.location.city}, {item.location.region} */}
                   </p>
                 </div>
               </li>
