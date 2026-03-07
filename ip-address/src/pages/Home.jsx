@@ -8,18 +8,29 @@ const Home = () => {
   const headerStyle = {
     backgroundImage: `url(${bgMobile})`,
     // border: "20px solid red",
-    zIndex: 2,
+    zIndex: 10,
+    position: "relative",
   };
+
+  const floatStyle = {
+    position: 'absolute',
+    zIndex: 100
+  }
 
   const mainStyle = {
     backgroundColor: "yellow",
     backgroundImage: 'url("../images/pattern-bg-mobile.png")',
+    zIndex: 10
     // border: "20px solid red",
   };
 
   const appStyle = {
     boxShadow: "0 10px 20px rgba(0,0,0,0.1)",
     minWidth: "450px",
+    display: "flex",
+    flexDirection: "column",
+    minHeight: "100vh",
+    position: "relative",
     // border: "30px solid green",
   };
 
@@ -34,7 +45,9 @@ const Home = () => {
         </nav>
         <SearchBar />
       </header>
-      <InfoDisplay />
+      <div style={floatStyle}>
+        <InfoDisplay />
+      </div>
 
       <main style={mainStyle}>
         <MapView />
