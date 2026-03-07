@@ -5,22 +5,34 @@ import { Link } from "react-router-dom";
 import bgMobile from "../images/pattern-bg-mobile.png";
 
 const Home = () => {
+  const HEADER_HEIGHT = 280;
+
   const headerStyle = {
     backgroundImage: `url(${bgMobile})`,
+    backgroundSize: "cover",
+    backgroundPosition: "center",
     // border: "20px solid red",
+    height: `${HEADER_HEIGHT}`,
     zIndex: 10,
     position: "relative",
+    padding: "8px 35px 55px 35px",
+    boxSizing: "border-box",
   };
 
   const floatStyle = {
-    position: 'absolute',
-    zIndex: 100
-  }
+    position: "absolute",
+    zIndex: 100,
+    top: `${HEADER_HEIGHT}px`,
+    left: "50%",
+    transform: "translate(-50%, -30%)",
+  };
 
   const mainStyle = {
+    flex: 1,
+    position: "relative",
     backgroundColor: "yellow",
     backgroundImage: 'url("../images/pattern-bg-mobile.png")',
-    zIndex: 10
+    zIndex: 10,
     // border: "20px solid red",
   };
 
@@ -31,6 +43,7 @@ const Home = () => {
     flexDirection: "column",
     minHeight: "100vh",
     position: "relative",
+    overflowX: "hidden",
     // border: "30px solid green",
   };
 

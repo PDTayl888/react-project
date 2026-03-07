@@ -20,10 +20,20 @@ const Favorites = () => {
 
   const mainStyle = {
     backgroundImage: `url(${bgMobile})`,
-
-    // backgroundColor: "black",
-    border: "20px solid red",
     minWidth: "450px",
+    paddingBottom: "10px",
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+    display: "flex",
+    flexDirection: "column",
+  };
+
+  const listStyle = {
+    width: '100%',
+    display: "flex",
+    flexDirection: "column",
+    alignItems: 'center',
+    //marginRight: '100px'
   };
 
   return (
@@ -34,7 +44,7 @@ const Favorites = () => {
           HOME
         </Link>
       </div>
-      <div>
+      <div style={listStyle}>
         {favoritesCount === 0 ? (
           <p>NONE SAVED</p>
         ) : (

@@ -18,17 +18,19 @@ export const IPContext = createContext();
 
 const IPProvider = ({ children }) => {
   const [query, setQuery] = useState("");
-  const [locationData, setLocationData] = useState(mockData);
+  const [locationData, setLocationData] = useState();
 
-  const url = query
-    ? `https://geo.ipify.org/api/v2/country,city?apiKey=${apiKey}&ipAddress=${query}`
-    : null;
+  const apiKey = 'at_KP6w8IL9oQP8yZacXg4P6tHyVCD4y';
 
+const url = query
+  ? `https://geo.ipify.org/api/v2/country,city?apiKey=${apiKey}&ipAddress=${query}`
+  : `https://geo.ipify.org/api/v2/country,city?apiKey=${apiKey}`;
+  
   const { data, loading, error } = useFetch(url);
 
   useEffect(() => {
     if (data) {
-      setLocationData(mockData);
+      setLocationData(data);
     }
   }, [data]);
 

@@ -10,9 +10,11 @@ const InfoDisplay = ({ data }) => {
     display: "flex",
     flexDirection: "column",
     gap: "1rem",
-    boxShadow: "0 10px 20px rgba(0,0,0,0.1)",
+    boxShadow: "0 100px 200px rgba(0,0,0,0.1)",
     textAlign: "center",
-    maxWidth: '200px'
+    maxWidth: '200px',
+    maxHeight: '350px',
+    marginBottom: '10px'
   };
 
   const sectionStyle = {

@@ -4,11 +4,11 @@ import L from "leaflet";
 import { useEffect } from "react";
 import { IPContext } from "../context/IPContext";
 import { useContext } from "react";
+import locationSvg from "../images/icon-location.svg";
 
 // import {
 //   FavoritesContext
 // } from "../context/FavoritesContext";
-
 
 import icon from "leaflet/dist/images/marker-icon.png";
 import iconShadow from "leaflet/dist/images/marker-shadow.png";
@@ -18,24 +18,28 @@ const RecenterMap = ({ lat, lng }) => {
 
   useEffect(() => {
     if (lat && lng) {
-      map.setView([lat, lng], 13);
+      map.flyTo([lat, lng], 13, {
+        animate: true,
+        duration: 1.5, 
+      });
     }
   }, [lat, lng, map]);
 
   return null;
 };
 
-let DefaultIcon = L.icon({
-  iconUrl: icon,
-  shadowUrl: iconShadow,
-  iconSize: [25, 41],
-  iconAnchor: [12, 41],
+let CustomIcon = L.icon({
+  iconUrl: locationSvg,
+  iconSize: [46, 56],
+  iconAnchor: [23, 56],
+  popupAnchor: [0, -50],
 });
-L.Marker.prototype.options.icon = DefaultIcon;
+L.Marker.prototype.options.icon = CustomIcon;
+
+
 
 const MapView = () => {
-      const { locationData } = useContext(IPContext);
-
+  const { locationData } = useContext(IPContext);
 
   if (!locationData || !locationData.location)
     return <div className="map-placeholder">Loading Map...</div>;
@@ -45,27 +49,25 @@ const MapView = () => {
 
   return (
     <section>
-    <MapContainer
-      center={position}
-      zoom={13}
-      scrollWheelZoom={true}
-      style={{ height: '70vh'}}
-    >
-      <TileLayer
-        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-      />
+      <MapContainer
+        center={position}
+        zoom={13}
+        scrollWheelZoom={true}
+        style={{ height: "70vh" }}
+      >
+        <TileLayer
+          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+        />
 
-      <RecenterMap lat={lat} lng={lng} />
+        <RecenterMap lat={lat} lng={lng} />
 
-      <Marker position={position}>
-        <Popup>
-          {locationData.ip} <br /> {locationData.location.city}
-        </Popup>
-      </Marker>
-    </MapContainer>
-
-
+        <Marker position={position} icon={CustomIcon}>
+          <Popup>
+            {locationData.ip} <br /> {locationData.location.city}
+          </Popup>
+        </Marker>
+      </MapContainer>
     </section>
   );
 };
