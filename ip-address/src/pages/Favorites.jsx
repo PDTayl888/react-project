@@ -4,6 +4,8 @@ import { FavoritesContext } from "../context/FavoritesContext";
 import { IPContext } from "../context/IPContext";
 import InfoDisplay from "../component/InfoDisplay";
 import bgMobile from "../images/pattern-bg-mobile.png";
+  import { useState, useEffect } from 'react';
+
 
 const Favorites = () => {
   const { favorites } = useContext(FavoritesContext);
@@ -17,6 +19,16 @@ const Favorites = () => {
   // console.log("favs list");
   // console.log(favorites);
   const favoritesCount = favorites?.length ?? 0;
+
+    const [isDesktop, setIsDesktop] = useState(window.innerWidth > 800);
+  
+    useEffect(() => {
+      const handleResize = () => setIsDesktop(window.innerWidth > 800);
+      window.addEventListener("resize", handleResize);
+      return () => window.removeEventListener("resize", handleResize);
+    }, []);
+  
+  
 
   const mainStyle = {
     backgroundImage: `url(${bgMobile})`,
@@ -33,9 +45,7 @@ const Favorites = () => {
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
-        overflowX: "hidden",
-
-
+    marginBottom: isDesktop ? "40px" : "25px",
     //marginRight: '100px'
   };
 
@@ -53,7 +63,7 @@ const Favorites = () => {
         ) : (
           <ul>
             {favorites.map((item) => (
-              <div onClick={() => displayFav(item.ip)} key={item.ip}>
+              <div style={{paddingBottom: '5px'}} onClick={() => displayFav(item.ip)} key={item.ip}>
                 {/* {console.log(item)} */}
                 <InfoDisplay data={item}></InfoDisplay>
               </div>

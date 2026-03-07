@@ -1,19 +1,17 @@
 import { IPContext } from "../context/IPContext";
 import { useContext } from "react";
 import { FavoritesContext } from "../context/FavoritesContext";
-import { stopPropagation } from './../../node_modules/leaflet/src/dom/DomEvent';
+import { stopPropagation } from "./../../node_modules/leaflet/src/dom/DomEvent";
 import { useEffect, useState } from "react";
 
 const InfoDisplay = ({ data }) => {
-
-  const [isDesktop, setIsDesktop] = useState(window.innerWidth > 1024);
+  const [isDesktop, setIsDesktop] = useState(window.innerWidth > 800);
 
   useEffect(() => {
-    const handleResize = () => setIsDesktop(window.innerWidth > 1024);
+    const handleResize = () => setIsDesktop(window.innerWidth > 800);
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
-
 
   const cardStyle = {
     background: "white",
@@ -23,19 +21,21 @@ const InfoDisplay = ({ data }) => {
     flexDirection: isDesktop ? "row" : "column",
     justifyContent: isDesktop ? "space-between" : "center",
     alignItems: isDesktop ? "center" : "stretch",
-    gap: isDesktop ? "2rem" : "1rem",
+    gap: isDesktop ? "0" : "1.5rem",
     boxShadow: "0 100px 200px rgba(0,0,0,0.1)",
     textAlign: "center",
-    maxWidth: '200px',
-    maxHeight: '350px',
-    marginBottom: '10px'
+    maxWidth: isDesktop ? "1100px" : "320px",
+    maxHeight: "350px",
+    margin: "0 auto",
+    width: "80%",
   };
 
   const sectionStyle = {
     display: "flex",
     flexDirection: "column",
-    borderRight: isDesktop ? "1px solid #e6e6e6" : "none",
-    paddingRight: isDesktop ? "2rem" : "0",
+    borderRight: isDesktop ? "1px solid #bdb3b3" : "none",
+    paddingRight: isDesktop ? ".4rem" : "0",
+    paddingLeft: isDesktop ? ".1rem" : "0",
     gap: "0.25rem",
   };
 
@@ -122,7 +122,6 @@ const InfoDisplay = ({ data }) => {
         <p style={infoStyle}>{loading ? "Loading..." : isp}</p>
       </div>
       <div style={buttonSectionStyle}>
-
         <button style={buttonStyle} onClick={toggleFavorite}>
           {favStatus ? "❤️" : "🩶"}
         </button>

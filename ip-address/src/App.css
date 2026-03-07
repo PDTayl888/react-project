@@ -1,7 +1,8 @@
 #root {
-  max-width: 3000px;
+  width: 85%;
+  max-width: 85%;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 0;
   text-align: center;
 }
 
@@ -10,7 +11,7 @@
   width: 100%;
 }
 .map-container-wrapper {
-  height: 500px; /* Or 60vh, 100%, etc. */
+  height: 70vh; /* Or 60vh, 100%, etc. */
   width: 100%;
   position: relative;
 }
