@@ -8,9 +8,9 @@ import bgMobile from "../images/pattern-bg-mobile.png";
 const Favorites = () => {
   const { favorites } = useContext(FavoritesContext);
   const navigate = useNavigate();
+  const { fetchLocation } = useContext(IPContext);
 
   const displayFav = (ip) => {
-    const { fetchLocation } = IPContext();
     fetchLocation(ip);
     navigate("/");
   };
@@ -29,10 +29,13 @@ const Favorites = () => {
   };
 
   const listStyle = {
-    width: '100%',
+    width: "100%",
     display: "flex",
     flexDirection: "column",
-    alignItems: 'center',
+    alignItems: "center",
+        overflowX: "hidden",
+
+
     //marginRight: '100px'
   };
 
@@ -50,10 +53,9 @@ const Favorites = () => {
         ) : (
           <ul>
             {favorites.map((item) => (
-              <div key={item.ip}>
+              <div onClick={() => displayFav(item.ip)} key={item.ip}>
                 {/* {console.log(item)} */}
                 <InfoDisplay data={item}></InfoDisplay>
-                <div onClick={() => displayFav(item.ip)}></div>
               </div>
             ))}
           </ul>

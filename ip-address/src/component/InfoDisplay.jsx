@@ -1,15 +1,29 @@
 import { IPContext } from "../context/IPContext";
 import { useContext } from "react";
 import { FavoritesContext } from "../context/FavoritesContext";
+import { stopPropagation } from './../../node_modules/leaflet/src/dom/DomEvent';
+import { useEffect, useState } from "react";
 
 const InfoDisplay = ({ data }) => {
+
+  const [isDesktop, setIsDesktop] = useState(window.innerWidth > 1024);
+
+  useEffect(() => {
+    const handleResize = () => setIsDesktop(window.innerWidth > 1024);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+
   const cardStyle = {
     background: "white",
     borderRadius: "15px",
     padding: "1.5rem",
     display: "flex",
-    flexDirection: "column",
-    gap: "1rem",
+    flexDirection: isDesktop ? "row" : "column",
+    justifyContent: isDesktop ? "space-between" : "center",
+    alignItems: isDesktop ? "center" : "stretch",
+    gap: isDesktop ? "2rem" : "1rem",
     boxShadow: "0 100px 200px rgba(0,0,0,0.1)",
     textAlign: "center",
     maxWidth: '200px',
@@ -20,6 +34,8 @@ const InfoDisplay = ({ data }) => {
   const sectionStyle = {
     display: "flex",
     flexDirection: "column",
+    borderRight: isDesktop ? "1px solid #e6e6e6" : "none",
+    paddingRight: isDesktop ? "2rem" : "0",
     gap: "0.25rem",
   };
 
@@ -36,7 +52,7 @@ const InfoDisplay = ({ data }) => {
   };
 
   const infoStyle = {
-    fontSize: "1.25rem",
+    fontSize: isDesktop ? "1.5rem" : "1.25rem",
     fontWeight: 700,
     color: "#2c2c2c",
     margin: 0,
@@ -64,14 +80,17 @@ const InfoDisplay = ({ data }) => {
   if (!activeData || !activeData.location) return null;
 
   if (!locationData || !locationData.location) return null;
-  const { ip, isp, location } = locationData;
+  const { ip, isp, location } = activeData;
   const favStatus = isFavorite(ip);
 
-  const toggleFavorite = () => {
+  const toggleFavorite = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+
     if (favStatus) {
       removeFromFavorites(ip);
     } else {
-      addToFavorites(locationData);
+      addToFavorites(activeData);
     }
   };
 
@@ -81,6 +100,7 @@ const InfoDisplay = ({ data }) => {
         <span style={labelStyle}>IP ADDRESS</span>
         <p style={infoStyle}>{loading ? "LOADING..." : ip}</p>
       </div>
+
       <div style={sectionStyle}>
         <span style={labelStyle}>LOCATION</span>
         <p style={infoStyle}>
@@ -89,17 +109,20 @@ const InfoDisplay = ({ data }) => {
             : `${location.city}, ${location.region} ${location.postalCode}`}
         </p>
       </div>
+
       <div style={sectionStyle}>
         <span style={labelStyle}>TIMEZONE</span>
         <p style={infoStyle}>
           {loading ? "Loading..." : `UTC ${location.timezone}`}
         </p>
       </div>
+
       <div style={sectionStyle}>
         <span style={labelStyle}>ISP</span>
         <p style={infoStyle}>{loading ? "Loading..." : isp}</p>
       </div>
       <div style={buttonSectionStyle}>
+
         <button style={buttonStyle} onClick={toggleFavorite}>
           {favStatus ? "❤️" : "🩶"}
         </button>

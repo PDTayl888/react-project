@@ -16,7 +16,7 @@ const Home = () => {
     zIndex: 10,
     position: "relative",
     padding: "8px 35px 55px 35px",
-    boxSizing: "border-box",
+    // boxSizing: "border-box",
   };
 
   const floatStyle = {
@@ -24,13 +24,13 @@ const Home = () => {
     zIndex: 100,
     top: `${HEADER_HEIGHT}px`,
     left: "50%",
-    transform: "translate(-50%, -30%)",
+    transform: "translate(-50%, -28%)",
   };
 
   const mainStyle = {
     flex: 1,
     position: "relative",
-    backgroundColor: "yellow",
+    // backgroundColor: "yellow",
     backgroundImage: 'url("../images/pattern-bg-mobile.png")',
     zIndex: 10,
     // border: "20px solid red",
@@ -44,6 +44,7 @@ const Home = () => {
     minHeight: "100vh",
     position: "relative",
     overflowX: "hidden",
+    maxWidth: '5000px'
     // border: "30px solid green",
   };
 

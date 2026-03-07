@@ -4,7 +4,7 @@ import useLocalStorage from "../hooks/useLocalStorage";
 export const FavoritesContext = createContext();
 
 const FavoritesProvider = ({ children }) => {
-  const [favorites, setFavorites] = useLocalStorage([]);
+  const [favorites, setFavorites] = useLocalStorage('favorites', []);
 
   const addToFavorites = (location) => {
     console.log("ADDED");
@@ -15,10 +15,14 @@ const FavoritesProvider = ({ children }) => {
 
   const removeFromFavorites = (ip) => {
     console.log("REMOVED");
+    console.log(favorites);
     setFavorites(favorites.filter((item) => item.ip !== ip));
   };
 
   const isFavorite = (ip) => {
+        console.log("ADDED");
+    console.log(favorites);
+
     const isIt = !!favorites?.find((item) => item.ip === ip);
     return isIt;
   };
