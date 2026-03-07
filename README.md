@@ -4,7 +4,7 @@ NEW FAVORITES PAGE! Simply click the heart icon found in the info display card a
 
 Find the new and improved ip address tracker app here: https://69ab9becd40eff063bfb4418--soft-mandazi-eb1968.netlify.app/
 
-![alt text](<src/images/Screenshot 2026-03-06 223216.png>)
-![alt text](<src/images/Screenshot 2026-03-06 223316.png>)
-![alt text](<src/images/Screenshot 2026-03-06 223338.png>)
-![alt text](<src/images/Screenshot 2026-03-06 223354.png>)
+![alt text](<ip-address/src/images/Screenshot 2026-03-06 223216.png>) 
+![alt text](<ip-address/src/images/Screenshot 2026-03-06 223316.png>) 
+![alt text](<ip-address/src/images/Screenshot 2026-03-06 223338.png>)
+![alt text](<ip-address/src/images/Screenshot 2026-03-06 223354.png>)
